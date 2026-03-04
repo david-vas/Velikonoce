@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velikonoční běh Hluboká 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6e3;
+    --green: #4a7c59;
+    --green-light: #7fb069;
+    --yellow: #f5c842;
+    --coral: #e8735a;
+    --lilac: #c9a9d4;
+    --sky: #a8d5e2;
+    --brown: #8b5e3c;
+    --text: #2d2a1e;
+    --card-bg: rgba(255,255,255,0.75);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+
+
+  /* ===== WRAPPER ===== */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 2px 12px rgba(74,124,89,0.25);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--green);
+    text-shadow: 3px 3px 0 rgba(74,124,89,0.12);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 span {
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--brown);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--yellow);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.55rem 1.5rem;
+    border-radius: 999px;
+    margin-top: 1rem;
+    box-shadow: 0 4px 16px rgba(245,200,66,0.4);
+  }
+
+
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    color: var(--green-light);
+    font-size: 1.4rem;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--green-light), transparent);
+    border-radius: 2px;
+  }
+
+  /* ===== QUICK FACTS STRIP ===== */
+  .facts-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fact-card {
+    background: var(--card-bg);
+    border: 2px solid rgba(127,176,105,0.25);
+    border-radius: 20px;
+    padding: 1.4rem 1rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .fact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  }
+
+  .fact-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .fact-value { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; color: var(--green); line-height: 1; }
+  .fact-label { font-size: 0.78rem; color: #777; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
+
+  /* ===== SECTION ===== */
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title .icon { font-size: 1.4rem; }
+
+  /* ===== CARD ===== */
+  .card {
+    background: var(--card-bg);
+    border: 2px solid rgba(127,176,105,0.2);
+    border-radius: 20px;
+    padding: 1.8rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  /* ===== PROGRAM TIMELINE ===== */
+  .timeline { list-style: none; }
+
+  .timeline li {
+    display: grid;
+    grid-template-columns: 110px 16px 1fr;
+    gap: 0 1rem;
+    align-items: center;
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed rgba(127,176,105,0.3);
+  }
+
+  .timeline li:last-child { border-bottom: none; }
+
+  .tl-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--coral);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .tl-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--green-light);
+    flex-shrink: 0;
+    justify-self: center;
+    box-shadow: 0 0 0 4px rgba(127,176,105,0.2);
+  }
+
+  .tl-text { font-size: 0.97rem; line-height: 1.5; }
+
+  /* ===== CATEGORIES GRID ===== */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .cat-item {
+    background: linear-gradient(135deg, rgba(127,176,105,0.12), rgba(168,213,226,0.15));
+    border: 1.5px solid rgba(127,176,105,0.25);
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cat-item::before {
+    content: '🥚';
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== REGISTRATION HIGHLIGHT ===== */
+  .reg-box {
+    background: linear-gradient(135deg, var(--green), var(--green-light));
+    color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(74,124,89,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reg-box::before {
+    content: '🐣';
+    position: absolute;
+    font-size: 8rem;
+    right: -1rem;
+    top: -1rem;
+    opacity: 0.15;
+    transform: rotate(15deg);
+  }
+
+  .reg-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0.5rem 0;
+  }
+
+  .reg-price span { font-size: 1.5rem; }
+  .reg-note { font-size: 0.88rem; opacity: 0.85; margin-top: 0.4rem; }
+  .reg-deadline { background: rgba(255,255,255,0.2); border-radius: 12px; padding: 0.8rem 1.2rem; margin-top: 1.2rem; font-size: 0.9rem; }
+  .reg-deadline strong { display: block; font-size: 1rem; }
+
+  .reg-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: var(--yellow);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.85rem 2.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .reg-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+
+  /* ===== REFRESHMENT ===== */
+  .refresh-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+
+  .refresh-list li {
+    background: rgba(245,200,66,0.2);
+    border: 1.5px solid rgba(245,200,66,0.5);
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* ===== INFO ROW ===== */
+  .info-row {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed rgba(127,176,105,0.25);
+  }
+
+  .info-row:last-child { border-bottom: none; }
+  .info-row .lbl { font-weight: 600; min-width: 180px; color: var(--green); font-size: 0.9rem; }
+  .info-row .val { font-size: 0.9rem; line-height: 1.5; }
+  .info-row a { color: var(--coral); text-decoration: none; }
+  .info-row a:hover { text-decoration: underline; }
+
+  /* ===== WARNING ===== */
+  .warning-box {
+    background: rgba(232,115,90,0.1);
+    border: 2px solid rgba(232,115,90,0.35);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .warning-box .warn-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+  /* ===== PRIZES ===== */
+  .prizes {
+    background: linear-gradient(135deg, rgba(245,200,66,0.15), rgba(201,169,212,0.2));
+    border: 2px dashed rgba(245,200,66,0.5);
+    border-radius: 20px;
+    padding: 1.6rem;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .prizes .trophy { font-size: 3rem; }
+  .prizes p { margin-top: 0.6rem; line-height: 1.6; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.85rem;
+    color: #999;
+    border-top: 1px solid rgba(127,176,105,0.2);
+    margin-top: 3rem;
+  }
+
+  footer a { color: var(--green); text-decoration: none; }
+  footer .footer-eggs { font-size: 1.5rem; letter-spacing: 0.4em; margin-top: 0.5rem; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 560px) {
+    .cat-grid { grid-template-columns: 1fr; }
+    .info-row { flex-direction: column; gap: 0.2rem; }
+    .info-row .lbl { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrapper">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">🐰 Hluboká nad Vltavou · 2026</div>
+    <h1>Velikonoční<br><span>běh</span></h1>
+    <p class="hero-sub">Hluboká nad Vltavou u kostela</p>
+    <div class="hero-date">📅 pátek 3. dubna 2026 &nbsp;·&nbsp; ⏱ start 11:00</div>
+
+  </header>
+
+  <!-- QUICK FACTS -->
+  <div class="facts-strip">
+    <div class="fact-card">
+      <div class="fact-icon">🏃</div>
+      <div class="fact-value">10 km</div>
+      <div class="fact-label">délka trati</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon">⏱</div>
+      <div class="fact-value">11:00</div>
+      <div class="fact-label">start závodu</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon">💳</div>
+      <div class="fact-value">350 Kč</div>
+      <div class="fact-label">online registrace</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon">🍌</div>
+      <div class="fact-value">4 + 7 km</div>
+      <div class="fact-label">občerstvovací stanice</div>
+    </div>
+  </div>
+
+  <div class="divider">🌷</div>
+
+  <!-- PROGRAM -->
+  <section>
+    <div class="section-title"><span class="icon">📋</span> Program dne</div>
+    <div class="card">
+      <ul class="timeline">
+        <li>
+          <span class="tl-time">9:00–10:30</span>
+          <span class="tl-dot"></span>
+          <span class="tl-text">Registrace do závodu</span>
+        </li>
+        <li>
+          <span class="tl-time">10:30</span>
+          <span class="tl-dot"></span>
+          <span class="tl-text">🤸 Společná rozcvička s <strong>Davidem Vašem</strong><br><small style="color:#999">Sraz v prostorách startu</small></span>
+        </li>
+        <li>
+          <span class="tl-time">11:00</span>
+          <span class="tl-dot" style="background:var(--coral);box-shadow:0 0 0 4px rgba(232,115,90,0.2)"></span>
+          <span class="tl-text">🏁 <strong>Start hlavního závodu</strong></span>
+        </li>
+        <li>
+          <span class="tl-time">~13:00</span>
+          <span class="tl-dot" style="background:var(--yellow);box-shadow:0 0 0 4px rgba(245,200,66,0.2)"></span>
+          <span class="tl-text">🏆 Vyhlášení výsledků<br><small style="color:#999">Upřesní se podle průběhu závodu</small></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- REGISTRATION -->
+  <section>
+    <div class="section-title"><span class="icon">✍️</span> Registrace a startovné</div>
+    <div class="reg-box">
+      <div style="font-size:1rem;opacity:0.9">Online startovné</div>
+      <div class="reg-price">350 <span>Kč</span></div>
+      <div class="reg-note">Na místě: 500 Kč</div>
+      <div class="reg-deadline">
+        <strong>⏰ Deadline pro online registraci</strong>
+        čtvrtek 2. dubna do 20:00
+      </div>
+      <div class="reg-deadline" style="margin-top:0.6rem">
+        <strong>🪧 Startovní číslo se jménem?</strong>
+        Registrujte se do středy 1. dubna do 20:00
+      </div>
+      <a href="https://www.velikonocenahluboke.cz" target="_blank" class="reg-btn">🐣 Registrovat se online</a>
+    </div>
+  </section>
+
+  <div class="divider">🌸</div>
+
+  <!-- CATEGORIES -->
+  <section>
+    <div class="section-title"><span class="icon">🏅</span> Věkové kategorie</div>
+    <div class="card">
+      <div class="cat-grid">
+        <div class="cat-item">Junioři / Juniorky 17–18 let</div>
+        <div class="cat-item">Muži A / Ženy A 19–29 let</div>
+        <div class="cat-item">Muži B / Ženy B 30–39 let</div>
+        <div class="cat-item">Muži C / Ženy C 40–49 let</div>
+        <div class="cat-item">Muži D / Ženy D 50–59 let</div>
+        <div class="cat-item">Muži E / Ženy E 60–69 let</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFRESHMENT -->
+  <section>
+    <div class="section-title"><span class="icon">🍌</span> Občerstvení na trati</div>
+    <div class="card">
+      <p style="margin-bottom:1rem;color:#666;font-size:0.95rem">Občerstvovací stanice na <strong>4. km</strong> a <strong>7. km</strong> trati</p>
+      <ul class="refresh-list">
+        <li>💧 Voda</li>
+        <li>⚡ Iontový nápoj</li>
+        <li>🍌 Banány</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TRASA -->
+  <section>
+    <div class="section-title"><span class="icon">🗺️</span> Trasa</div>
+    <div class="card">
+      <div class="info-row">
+        <span class="lbl">Délka</span>
+        <span class="val">10 km</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Mapa trasy</span>
+        <span class="val"><a href="https://mapy.com/s/fejotuvuda" target="_blank">mapy.com/s/fejotuvuda →</a></span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Start / Cíl</span>
+        <span class="val">Hluboká nad Vltavou u kostela</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Časomíra</span>
+        <span class="val">Čipová časomíra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIZES -->
+  <section>
+    <div class="prizes">
+      <div class="trophy">🏆</div>
+      <p>Pro nejrychlejší běžce v hlavním závodě jsou připraveny<br><strong>poháry a věcné dary</strong> 🎁</p>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section>
+    <div class="section-title"><span class="icon">⚠️</span> Bezpečnost a pravidla</div>
+    <div class="warning-box">
+      <span class="warn-icon">⚠️</span>
+      <span>Závodníci se účastní na vlastní nebezpečí a jsou povinni dodržovat pokyny pořadatelů. Podrobné instrukce (parkování, zázemí, přesné místo startu) budou zveřejněny na webu před závodem.</span>
+    </div>
+  </section>
+
+  <!-- ORGANIZER -->
+  <section>
+    <div class="section-title"><span class="icon">📞</span> Pořadatel</div>
+    <div class="card">
+      <div class="info-row">
+        <span class="lbl">Organizace</span>
+        <span class="val">Hope 4 you z.s.</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Adresa</span>
+        <span class="val">Masarykova 57, 373 41 Hluboká nad Vltavou</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">IČ</span>
+        <span class="val">05562716</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Ředitel závodu</span>
+        <span class="val">Jirka Rubick &nbsp;·&nbsp; <a href="tel:+420724543470">+420 724 543 470</a></span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Web</span>
+        <span class="val"><a href="https://www.velikonocenahluboke.cz" target="_blank">www.velikonocenahluboke.cz →</a></span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 <a href="https://www.velikonocenahluboke.cz">Velikonoční běh Hluboká</a> · Pořádá Hope 4 you z.s.</div>
+  <div class="footer-eggs">🐣🌷🥚🌸🐇</div>
+</footer>
+
+</body>
+</html>
